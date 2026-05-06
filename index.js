@@ -27,7 +27,7 @@ const INVENTORY = [
  * @returns {number[]} ids of given items
  */
 function getIds(items) {
-  // TODO
+  return items.map((item) => item.id);
 }
 
 /**
@@ -35,7 +35,7 @@ function getIds(items) {
  * @returns {string[]} categories of given items
  */
 function getCategories(items) {
-  // TODO
+  return items.map((item) => item.category);
 }
 
 /**
@@ -48,7 +48,7 @@ function getCategories(items) {
  * @returns {string[]} SKUs of given items
  */
 function getSkus(items) {
-  // TODO
+  return items.map((item) => `${item.id}#${item.name.length}`);
 }
 
 /**
@@ -56,7 +56,7 @@ function getSkus(items) {
  * @returns {Item[]} all items in the "fruit" category
  */
 function getFruits(items) {
-  // TODO
+  return items.filter((item) => item.category === "fruit");
 }
 
 /**
@@ -65,7 +65,7 @@ function getFruits(items) {
  * @returns {Item[]} all items in the given category
  */
 function getItemsByCategory(items, category) {
-  // TODO
+  return items.filter((item) => item.category === category);
 }
 
 /**
@@ -74,7 +74,7 @@ function getItemsByCategory(items, category) {
  * @returns {Item[]} all cheap items
  */
 function getCheapItems(items) {
-  // TODO
+  return items.filter((item) => item.price <= 2.5);
 }
 
 /**
@@ -82,7 +82,7 @@ function getCheapItems(items) {
  * @returns {number} the total quantity of all items given
  */
 function countItems(items) {
-  // TODO
+  return items.reduce((count, item) => count + item.quantity, 0);
 }
 
 /**
@@ -90,7 +90,7 @@ function countItems(items) {
  * @returns {number} the cost of purchasing every single item
  */
 function getTotalCost(items) {
-  // TODO
+  return items.reduce((total, item) => total + item.price * item.quantity, 0);
 }
 
 /**
@@ -98,5 +98,7 @@ function getTotalCost(items) {
  * @returns {Item} the item with the highest price
  */
 function getMostExpensiveItem(items) {
-  // TODO
+  return items.reduce((mostExpensive, item) =>
+    item.price > mostExpensive.price ? item : mostExpensive,
+  );
 }
